@@ -4,7 +4,7 @@
       <a class="button is-primary" @click="handlePreviousPageEvent" v-if="currentPage > minPage">Previous Page</a>
       <a class="button is-primary">{{ currentPage }}</a>
       <a class="button is-primary" @click="handleNextPageEvent" v-if="currentPage < maxPage">Next Page</a>
-      <a class="button is-primary">Marks</a>
+      <a class="button is-primary">Points</a>
       <a class="button is-primary">Time</a>
       <a class="button is-primary">Score</a>
     </div>
@@ -23,7 +23,7 @@ export default {
       prevEnabled: true,
       nextEnabled: true,
       minPage: 1,
-      maxPage: 26,
+      maxPage: 25,
     };
   },
   computed: {
@@ -32,12 +32,12 @@ export default {
   },
   methods: {
     handlePreviousPageEvent() {
-      if (this.currentPage !== 1) {
+      if (this.currentPage !== this.minPage) {
         this.currentPage -= 1;
       }
     },
     handleNextPageEvent() {
-      if (this.currentPage !== 26) {
+      if (this.currentPage !== this.maxPage) {
         this.currentPage += 1;
       }
     },
