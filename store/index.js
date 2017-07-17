@@ -7,7 +7,8 @@ const store = new Vuex.Store({
   state: {
     activeType: null,
     itemsPerPage: 20,
-    items: {},
+    items: { },
+    users: { },
     lists: {
       top: [],
       new: [],
@@ -17,3 +18,5 @@ const store = new Vuex.Store({
     },
   },
 });
+
+export default store;
