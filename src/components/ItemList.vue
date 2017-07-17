@@ -8,8 +8,20 @@
         <th>Score</th>
       </thead>
       <tbody>
-        <td>
-        </td>
+        <tr v-for="item in items">
+          <td>
+            {{ item.post }}
+          </td>
+          <td>
+            {{ item.points }}
+          </td>
+          <td>
+            {{ item.time }}
+          </td>
+          <td>
+            {{ item.score }}
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -17,16 +29,24 @@
 
 <script>
 
+import { mapGetters } from 'vuex';
 import ItemList from './ItemList';
 
 export default {
   name: 'Item',
   data() {
-    return {
-    };
+    return {};
+  },
+  computed: {
+    ...mapGetters({
+      items: 'items',
+    }),
   },
   components: {
     ItemList,
+    mapGetters,
+  },
+  methods: {
   },
 };
 </script>

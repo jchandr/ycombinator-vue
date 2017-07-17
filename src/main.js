@@ -6,7 +6,7 @@ import router from './router';
 import store from '../store';
 
 Vue.config.productionTip = false;
-Vue.use(require('vue-faker'));
+Vue.use(require('faker'));
 
 /* eslint-disable no-new */
 new Vue({
