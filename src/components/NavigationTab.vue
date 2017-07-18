@@ -1,9 +1,13 @@
 <template>
   <div>
     <div class="button-block">
-      <a class="button is-primary" @click="handlePreviousPageEvent" v-if="currentPage > minPage">Previous Page</a>
+      <a class="button is-primary"
+         @click="handlePreviousPageEvent"
+         v-if="currentPage > minPage">Previous Page</a>
       <a class="button is-primary">{{ currentPage }}</a>
-      <a class="button is-primary" @click="handleNextPageEvent" v-if="currentPage < maxPage">Next Page</a>
+      <a class="button is-primary"
+         @click="handleNextPageEvent"
+         v-if="currentPage < maxPage">Next Page</a>
       <a class="button is-primary">Points</a>
       <a class="button is-primary">Time</a>
       <a class="button is-primary">Score</a>
@@ -12,34 +16,35 @@
 </template>
 
 <script>
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
   name: 'Home',
-  props: {
-  },
+  props: {},
   data() {
-    return {
-      currentPage: 1,
-      prevEnabled: true,
-      nextEnabled: true,
-      minPage: 1,
-      maxPage: 25,
-    };
+    return {};
   },
   computed: {
+    ...mapGetters({
+      items: 'items',
+      currentPage: 'currentPage',
+      minPage: 'minPage',
+      maxPage: 'maxPage',
+    }),
   },
   components: {
+    mapGetters,
   },
   methods: {
+    ...mapMutations({
+      handleNextPageEventInStore: 'handleNextPageEvent',
+      handlePreviousPageEventInStore: 'handlePreviousPageEvent',
+    }),
     handlePreviousPageEvent() {
-      if (this.currentPage !== this.minPage) {
-        this.currentPage -= 1;
-      }
+      this.handlePreviousPageEventInStore();
     },
     handleNextPageEvent() {
-      if (this.currentPage !== this.maxPage) {
-        this.currentPage += 1;
-      }
+      this.handleNextPageEventInStore();
     },
   },
 };

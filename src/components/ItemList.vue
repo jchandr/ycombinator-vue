@@ -35,12 +35,15 @@ import ItemList from './ItemList';
 export default {
   name: 'Item',
   data() {
-    return {};
+    return {
+    };
   },
   computed: {
     ...mapGetters({
       items: 'items',
     }),
+    itemsToDisplay() {
+    },
   },
   components: {
     ItemList,
